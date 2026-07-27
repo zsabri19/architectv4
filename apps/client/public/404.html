@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting…</title>
+    <script>
+      // GitHub Pages SPA redirect for deep links.
+      // This page is served by GitHub Pages for any unknown route.
+      // It redirects to the app root with the original path encoded in the query string.
+      // The index.html script then restores the real path via history.replaceState.
+      (function () {
+        var l = window.location;
+        var base = "/architectv4";
+        var path = l.pathname.replace(base, "") || "/";
+        var redirect =
+          base +
+          "/?" +
+          path +
+          l.search.replace(/&/g, "~and~") +
+          l.hash;
+        l.replace(redirect);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
