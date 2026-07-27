@@ -1,0 +1,30 @@
+{
+  "schemaVersion": 1,
+  "id": "crm-runtime-contract-v1",
+  "paths": {
+    "workspaceManifest": ".skywork/web-apps.json",
+    "sourceRegistry": "apps/server/crm/source-registry.json",
+    "sourceRegistrySchema": ".skywork/crm/templates/source-registry.schema.json",
+    "adapterPattern": "apps/server/crm/adapters/<websiteId>.ts",
+    "validationResult": ".skywork/crm/validation.json"
+  },
+  "identity": {
+    "crmAppType": "crm",
+    "sourceAppType": "website",
+    "bindingSourceIdField": "websiteId",
+    "querySourceIdField": "sourceWebsiteId",
+    "querySourceNameField": "sourceName",
+    "supportStatuses": ["supported", "unsupported"]
+  },
+  "ownership": {
+    "sourceEntityOwner": "website",
+    "crmTablePrefix": "crm_"
+  },
+  "validation": {
+    "schemaVersion": 1,
+    "passedStatus": "passed",
+    "localOnly": true,
+    "onlineRuntimeVerificationAllowed": false,
+    "impactOutcomes": ["unaffected", "compatible-additive", "adapter-change", "required-breaking"]
+  }
+}

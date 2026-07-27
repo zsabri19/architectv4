@@ -1,0 +1,15 @@
+{
+  "schemaVersion": 1,
+  "templateId": "physical-commerce-v1",
+  "kind": "crm-scenario-reference",
+  "purpose": "Reference capabilities for mapping existing Website-owned physical-commerce implementations; never a storage schema or business-rule authority.",
+  "referenceEntities": ["products", "customers", "orders", "order_items", "inventory"],
+  "operatorCapabilities": {
+    "products": ["list", "create", "update", "archive"],
+    "customers": ["list", "create", "update", "archive"],
+    "orders": ["list", "read", "create", "update_status", "mark_paid", "mark_shipped", "mark_delivered", "cancel"],
+    "inventory": ["list", "adjust", "reserve", "release"]
+  },
+  "invariantTopics": ["order lifecycle", "payment and fulfillment consistency", "inventory availability", "inventory reservation and release"],
+  "requiredScenarioChecks": ["order-transition-invariants", "inventory-invariants"]
+}

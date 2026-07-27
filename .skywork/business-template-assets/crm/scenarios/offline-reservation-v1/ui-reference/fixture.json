@@ -1,0 +1,146 @@
+{
+  "templateId": "offline-reservation-v1",
+  "eyebrow": "BUSINESS CRM · OFFLINE RESERVATIONS",
+  "title": "Multi-website reservation control console",
+  "description": "Switch between reservation websites and operate the schedule, customers, locations, and service capacity owned by each site.",
+  "tabs": [
+    {
+      "id": "overview",
+      "label": "Overview",
+      "heading": "Schedule snapshot",
+      "description": "Monitor arrivals, capacity, and exceptions across locations.",
+      "action": "Refresh view",
+      "columns": ["Metric", "Current value", "Source"],
+      "rows": [
+        {"cells": ["Today's reservations", "26", "reservations"], "status": "Live"},
+        {"cells": ["Capacity alerts", "2", "time slots"], "status": "Attention"}
+      ]
+    },
+    {
+      "id": "reservations",
+      "label": "Reservations",
+      "heading": "Today's schedule",
+      "description": "See confirmed bookings, arrival status, and service capacity.",
+      "action": "Create reservation",
+      "actions": ["Create reservation", "Edit reservation", "Check in", "Complete reservation", "Cancel reservation", "Mark no-show"],
+      "columns": ["Time", "Customer", "Service"],
+      "rows": [
+        {"cells": ["10:00", "Avery Chen", "Two-person brewing experience"], "status": "Confirmed"},
+        {"cells": ["14:00", "Jordan Lee", "Coffee tasting"], "status": "Checked in"}
+      ]
+    },
+    {
+      "id": "customers",
+      "label": "Customers",
+      "heading": "Guest history",
+      "description": "Review visit history, preferences, and upcoming reservations.",
+      "action": "Add customer",
+      "actions": ["Add customer", "Edit customer", "Archive customer"],
+      "columns": ["Customer", "Visits", "Next reservation"],
+      "rows": [
+        {"cells": ["Avery Chen", "8", "Today 10:00"], "status": "Returning"},
+        {"cells": ["Jordan Lee", "3", "Today 14:00"], "status": "Checked in"}
+      ]
+    },
+    {
+      "id": "locations",
+      "label": "Locations",
+      "heading": "Location resources",
+      "description": "Maintain operating hours, rooms, and current utilisation.",
+      "action": "Add location",
+      "actions": ["Add location", "Edit location", "Archive location"],
+      "columns": ["Location", "Hours", "Utilisation"],
+      "rows": [
+        {"cells": ["Wukang Road", "09:00-21:00", "72%"], "status": "Open"},
+        {"cells": ["Anfu Road", "10:00-20:00", "48%"], "status": "Open"}
+      ]
+    },
+    {
+      "id": "services",
+      "label": "Services",
+      "heading": "Service catalogue",
+      "description": "Configure duration, capacity, location availability, and price.",
+      "action": "Add service",
+      "actions": ["Add service", "Edit service", "Archive service", "Add time slot", "Close slot"],
+      "columns": ["Service", "Duration", "Capacity"],
+      "rows": [
+        {"cells": ["Single-person brewing", "45 min", "1"], "status": "Bookable"},
+        {"cells": ["Coffee tasting", "90 min", "4"], "status": "Bookable"}
+      ]
+    }
+  ],
+  "sites": [
+    {
+      "id": "all",
+      "label": "All websites",
+      "caption": "Aggregated reservation, customer, location, and service capacity across every booking website.",
+      "badge": "Total",
+      "metrics": [
+        {"label": "Reservations today", "value": "26", "source": "Reservation tables"},
+        {"label": "Capacity alerts", "value": "2", "source": "Time slot tables"},
+        {"label": "Active locations", "value": "5", "source": "Location tables"}
+      ],
+      "tabs": [
+        {"id": "overview", "label": "Overview", "heading": "All-website reservation snapshot", "description": "Roll up schedule, guest, location, and service state from every reservation website.", "action": "Refresh all websites", "columns": ["Website", "Reservations", "Capacity risk", "Next action"], "rows": [{"cells": ["City studio", "14", "1 alert", "Open waitlist"], "status": "Attention"}, {"cells": ["Retreat website", "8", "Healthy", "Confirm arrivals"], "status": "Live"}, {"cells": ["Mobile events", "4", "1 alert", "Assign host"], "status": "Attention"}]},
+        {"id": "reservations", "label": "Reservations", "heading": "Unified reservation schedule", "description": "Operate bookings while keeping the owning website visible.", "action": "Create reservation", "actions": ["Create reservation", "Edit reservation", "Check in", "Complete reservation", "Cancel reservation", "Mark no-show"], "columns": ["Website", "Time", "Guest", "Service"], "rows": [{"cells": ["City studio", "10:00", "Avery Chen", "Brewing workshop"], "status": "Confirmed"}, {"cells": ["Retreat website", "15:30", "Jordan Lee", "Roastery tour"], "status": "Checked in"}, {"cells": ["Mobile events", "19:00", "Riley Fox", "Pop-up tasting"], "status": "Needs host"}]},
+        {"id": "customers", "label": "Customers", "heading": "Unified guest history", "description": "Review guest profiles and next reservations by website.", "action": "Add customer", "actions": ["Add customer", "Edit customer", "Archive customer"], "columns": ["Website", "Guest", "Visits", "Next reservation"], "rows": [{"cells": ["City studio", "Avery Chen", "8", "Today 10:00"], "status": "Returning"}, {"cells": ["Mobile events", "Riley Fox", "2", "Today 19:00"], "status": "Needs attention"}]},
+        {"id": "locations", "label": "Locations", "heading": "Unified location resources", "description": "Compare room, venue, and event capacity across websites.", "action": "Add location", "actions": ["Add location", "Edit location", "Archive location"], "columns": ["Website", "Location", "Hours", "Utilisation"], "rows": [{"cells": ["City studio", "Wukang Road", "09:00-21:00", "72%"], "status": "Open"}, {"cells": ["Retreat website", "Moganshan Cabin", "10:00-18:00", "64%"], "status": "Open"}]},
+        {"id": "services", "label": "Services", "heading": "Unified service catalogue", "description": "Configure capacity and availability across reservation websites.", "action": "Add service", "actions": ["Add service", "Edit service", "Archive service", "Add time slot", "Close slot"], "columns": ["Website", "Service", "Duration", "Capacity"], "rows": [{"cells": ["City studio", "Brewing workshop", "90 min", "4"], "status": "Bookable"}, {"cells": ["Mobile events", "Pop-up tasting", "120 min", "20"], "status": "Needs host"}]}
+      ]
+    },
+    {
+      "id": "city-studio",
+      "label": "City studio",
+      "caption": "Urban appointment website with rooms, staff, and same-day check-in state.",
+      "badge": "Studio",
+      "metrics": [
+        {"label": "Reservations today", "value": "14", "source": "Reservations"},
+        {"label": "Room alerts", "value": "1", "source": "Time slots"},
+        {"label": "Returning guests", "value": "9", "source": "Customers"}
+      ],
+      "tabs": [
+        {"id": "overview", "label": "Overview", "heading": "City studio snapshot", "description": "Monitor same-day arrivals, rooms, and staff capacity.", "action": "Refresh city studio", "columns": ["Metric", "Current value", "Owner table"], "rows": [{"cells": ["Reservations today", "14", "reservations"], "status": "Live"}, {"cells": ["Room alerts", "1", "time_slots"], "status": "Attention"}, {"cells": ["Returning guests", "9", "customers"], "status": "Live"}]},
+        {"id": "reservations", "label": "Reservations", "heading": "City studio schedule", "description": "Check in guests and handle same-day reservation changes.", "action": "Create studio reservation", "actions": ["Create reservation", "Edit reservation", "Check in", "Complete reservation", "Cancel reservation", "Mark no-show"], "columns": ["Time", "Guest", "Room", "Service"], "rows": [{"cells": ["10:00", "Avery Chen", "Room A", "Brewing workshop"], "status": "Confirmed"}, {"cells": ["14:00", "Morgan Park", "Room B", "Latte practice"], "status": "Checked in"}]},
+        {"id": "customers", "label": "Customers", "heading": "Studio guest history", "description": "Review preferences, visit count, and next booking.", "action": "Add studio guest", "actions": ["Add customer", "Edit customer", "Archive customer"], "columns": ["Guest", "Visits", "Preference", "Next reservation"], "rows": [{"cells": ["Avery Chen", "8", "Filter coffee", "Today 10:00"], "status": "Returning"}, {"cells": ["Morgan Park", "4", "Milk drinks", "Today 14:00"], "status": "Checked in"}]},
+        {"id": "locations", "label": "Locations", "heading": "Studio rooms", "description": "Maintain room capacity and operating windows.", "action": "Add studio room", "actions": ["Add location", "Edit location", "Archive location"], "columns": ["Room", "Hours", "Capacity", "Utilisation"], "rows": [{"cells": ["Room A", "09:00-21:00", "4", "72%"], "status": "Open"}, {"cells": ["Room B", "09:00-21:00", "6", "86%"], "status": "Busy"}]},
+        {"id": "services", "label": "Services", "heading": "Studio service catalogue", "description": "Configure duration, room requirements, and capacity.", "action": "Add studio service", "actions": ["Add service", "Edit service", "Archive service", "Add time slot", "Close slot"], "columns": ["Service", "Duration", "Room", "Capacity"], "rows": [{"cells": ["Brewing workshop", "90 min", "Room A", "4"], "status": "Bookable"}, {"cells": ["Latte practice", "60 min", "Room B", "6"], "status": "Bookable"}]}
+      ]
+    },
+    {
+      "id": "retreat",
+      "label": "Retreat website",
+      "caption": "Destination booking website with cabins, tours, and multi-day capacity rules.",
+      "badge": "Retreat",
+      "metrics": [
+        {"label": "Reservations today", "value": "8", "source": "Reservations"},
+        {"label": "Tour slots", "value": "5", "source": "Services"},
+        {"label": "Active venues", "value": "2", "source": "Locations"}
+      ],
+      "tabs": [
+        {"id": "overview", "label": "Overview", "heading": "Retreat website snapshot", "description": "Track destination bookings, guide capacity, and venue state.", "action": "Refresh retreat site", "columns": ["Metric", "Current value", "Owner table"], "rows": [{"cells": ["Reservations today", "8", "reservations"], "status": "Live"}, {"cells": ["Tour slots", "5", "services"], "status": "Live"}, {"cells": ["Guide conflicts", "0", "time_slots"], "status": "Healthy"}]},
+        {"id": "reservations", "label": "Reservations", "heading": "Retreat reservation schedule", "description": "Confirm arrivals and guide assignments.", "action": "Create retreat reservation", "actions": ["Create reservation", "Edit reservation", "Check in", "Complete reservation", "Cancel reservation", "Mark no-show"], "columns": ["Time", "Guest", "Venue", "Service"], "rows": [{"cells": ["11:00", "Jordan Lee", "Moganshan Cabin", "Roastery tour"], "status": "Confirmed"}, {"cells": ["15:30", "Dana Li", "Forest Pavilion", "Private cupping"], "status": "Checked in"}]},
+        {"id": "customers", "label": "Customers", "heading": "Retreat guest history", "description": "Review visit history and destination preferences.", "action": "Add retreat guest", "actions": ["Add customer", "Edit customer", "Archive customer"], "columns": ["Guest", "Visits", "Preference", "Next reservation"], "rows": [{"cells": ["Jordan Lee", "3", "Roastery tour", "Today 11:00"], "status": "Returning"}, {"cells": ["Dana Li", "1", "Private room", "Today 15:30"], "status": "Checked in"}]},
+        {"id": "locations", "label": "Locations", "heading": "Retreat venues", "description": "Maintain destination venues, hours, and utilisation.", "action": "Add retreat venue", "actions": ["Add location", "Edit location", "Archive location"], "columns": ["Venue", "Hours", "Capacity", "Utilisation"], "rows": [{"cells": ["Moganshan Cabin", "10:00-18:00", "12", "64%"], "status": "Open"}, {"cells": ["Forest Pavilion", "09:00-17:00", "8", "52%"], "status": "Open"}]},
+        {"id": "services", "label": "Services", "heading": "Retreat service catalogue", "description": "Configure guide capacity, location availability, and duration.", "action": "Add retreat service", "actions": ["Add service", "Edit service", "Archive service", "Add time slot", "Close slot"], "columns": ["Service", "Duration", "Venue", "Capacity"], "rows": [{"cells": ["Roastery tour", "120 min", "Moganshan Cabin", "12"], "status": "Bookable"}, {"cells": ["Private cupping", "90 min", "Forest Pavilion", "4"], "status": "Bookable"}]}
+      ]
+    },
+    {
+      "id": "mobile-events",
+      "label": "Mobile events",
+      "caption": "Pop-up reservation website with event venues, hosts, and flexible capacity.",
+      "badge": "Events",
+      "metrics": [
+        {"label": "Reservations today", "value": "4", "source": "Reservations"},
+        {"label": "Host alerts", "value": "1", "source": "Time slots"},
+        {"label": "Event venues", "value": "3", "source": "Locations"}
+      ],
+      "tabs": [
+        {"id": "overview", "label": "Overview", "heading": "Mobile events snapshot", "description": "Track pop-up event capacity, hosts, and guest status.", "action": "Refresh event site", "columns": ["Metric", "Current value", "Owner table"], "rows": [{"cells": ["Reservations today", "4", "reservations"], "status": "Live"}, {"cells": ["Host alerts", "1", "time_slots"], "status": "Attention"}, {"cells": ["Event venues", "3", "locations"], "status": "Live"}]},
+        {"id": "reservations", "label": "Reservations", "heading": "Event reservation schedule", "description": "Assign hosts and resolve capacity before the event starts.", "action": "Create event reservation", "actions": ["Create reservation", "Edit reservation", "Check in", "Complete reservation", "Cancel reservation", "Mark no-show"], "columns": ["Time", "Guest", "Event", "Host"], "rows": [{"cells": ["19:00", "Riley Fox", "Pop-up tasting", "Unassigned"], "status": "Needs host"}, {"cells": ["19:30", "Taylor Kim", "Market tasting", "Sam Wu"], "status": "Confirmed"}]},
+        {"id": "customers", "label": "Customers", "heading": "Event guest history", "description": "Review event attendance and preferences.", "action": "Add event guest", "actions": ["Add customer", "Edit customer", "Archive customer"], "columns": ["Guest", "Events", "Preference", "Next event"], "rows": [{"cells": ["Riley Fox", "2", "Light roast", "Today 19:00"], "status": "Needs attention"}, {"cells": ["Taylor Kim", "5", "Cupping", "Today 19:30"], "status": "Returning"}]},
+        {"id": "locations", "label": "Locations", "heading": "Event venues", "description": "Maintain temporary venues and capacity windows.", "action": "Add event venue", "actions": ["Add location", "Edit location", "Archive location"], "columns": ["Venue", "Hours", "Capacity", "Utilisation"], "rows": [{"cells": ["West Bund Market", "18:00-22:00", "20", "80%"], "status": "Open"}, {"cells": ["Bookstore pop-up", "15:00-20:00", "16", "56%"], "status": "Open"}]},
+        {"id": "services", "label": "Services", "heading": "Event service catalogue", "description": "Configure host requirements, venue rules, and slot capacity.", "action": "Add event service", "actions": ["Add service", "Edit service", "Archive service", "Add time slot", "Close slot"], "columns": ["Service", "Duration", "Host need", "Capacity"], "rows": [{"cells": ["Pop-up tasting", "120 min", "2 hosts", "20"], "status": "Needs host"}, {"cells": ["Market tasting", "90 min", "1 host", "16"], "status": "Bookable"}]}
+      ]
+    }
+  ]
+}

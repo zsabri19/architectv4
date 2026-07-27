@@ -1,0 +1,146 @@
+{
+  "templateId": "digital-commerce-v1",
+  "eyebrow": "BUSINESS CRM · DIGITAL COMMERCE",
+  "title": "Multi-website digital fulfilment console",
+  "description": "Switch between digital websites and operate each site's products, customers, orders, and delivery tables.",
+  "tabs": [
+    {
+      "id": "overview",
+      "label": "Overview",
+      "heading": "Delivery snapshot",
+      "description": "Surface access grants, expiring rights, and delivery exceptions.",
+      "action": "Refresh view",
+      "columns": ["Metric", "Current value", "Source"],
+      "rows": [
+        {"cells": ["Pending deliveries", "7", "deliveries"], "status": "Attention"},
+        {"cells": ["Expiring entitlements", "3", "entitlements"], "status": "Live"}
+      ]
+    },
+    {
+      "id": "products",
+      "label": "Products",
+      "heading": "Digital catalogue",
+      "description": "Make fulfilment method and validity visible for every product.",
+      "action": "Add product",
+      "actions": ["Add product", "Edit product", "Archive product"],
+      "columns": ["Product", "Delivery", "Price"],
+      "rows": [
+        {"cells": ["Coffee fundamentals course", "Course access", "$29.00"], "status": "Active"},
+        {"cells": ["Flavor wheel guide", "Download link", "$8.00"], "status": "Active"}
+      ]
+    },
+    {
+      "id": "orders",
+      "label": "Orders",
+      "heading": "Content orders",
+      "description": "Review orders alongside their delivery state.",
+      "action": "Create order",
+      "actions": ["Create order", "Mark as paid", "Cancel order"],
+      "columns": ["Order", "Customer", "Product"],
+      "rows": [
+        {"cells": ["DC-2041", "Morgan Park", "Coffee fundamentals course"], "status": "Delivered"},
+        {"cells": ["DC-2042", "Taylor Kim", "Summer voucher"], "status": "Pending delivery"}
+      ]
+    },
+    {
+      "id": "customers",
+      "label": "Customers",
+      "heading": "Customer access",
+      "description": "Review active access, delivery history, and support context.",
+      "action": "Add customer",
+      "actions": ["Add customer", "Edit customer", "Archive customer"],
+      "columns": ["Customer", "Active rights", "Last delivery"],
+      "rows": [
+        {"cells": ["Morgan Park", "2", "2026-07-16"], "status": "Active"},
+        {"cells": ["Taylor Kim", "1", "Not delivered"], "status": "Needs attention"}
+      ]
+    },
+    {
+      "id": "deliveries",
+      "label": "Deliveries",
+      "heading": "Delivery centre",
+      "description": "Resolve outstanding access grants and download links.",
+      "action": "Deliver selected",
+      "actions": ["Create delivery", "Deliver selected", "Retry delivery", "Cancel delivery"],
+      "columns": ["Customer", "Delivery", "Expires"],
+      "rows": [
+        {"cells": ["Taylor Kim", "Voucher code", "2026-08-31"], "status": "Pending"},
+        {"cells": ["Morgan Park", "Course access", "Never"], "status": "Delivered"}
+      ]
+    }
+  ],
+  "sites": [
+    {
+      "id": "all",
+      "label": "All websites",
+      "caption": "Aggregated digital product, access, customer, order, and delivery data.",
+      "badge": "Total",
+      "metrics": [
+        {"label": "Digital products", "value": "28", "source": "Unified catalogues"},
+        {"label": "Pending deliveries", "value": "7", "source": "Delivery queues"},
+        {"label": "Active entitlements", "value": "416", "source": "Access tables"}
+      ],
+      "tabs": [
+        {"id": "overview", "label": "Overview", "heading": "All-website delivery snapshot", "description": "Roll up delivery and entitlement health from every digital website.", "action": "Refresh all websites", "columns": ["Website", "Products", "Pending delivery", "Risk"], "rows": [{"cells": ["Course website", "11", "3", "Expiring access"], "status": "Attention"}, {"cells": ["Downloads website", "9", "2", "Healthy"], "status": "Live"}, {"cells": ["Membership website", "8", "2", "Renewal watch"], "status": "Attention"}]},
+        {"id": "products", "label": "Products", "heading": "Unified digital catalogue", "description": "Compare fulfilment methods and pricing across websites.", "action": "Create digital product", "actions": ["Add product", "Edit product", "Archive product"], "columns": ["Website", "Product", "Delivery", "Price"], "rows": [{"cells": ["Course website", "Advanced roasting class", "Course access", "$89.00"], "status": "Active"}, {"cells": ["Downloads website", "Cafe menu kit", "Download link", "$12.00"], "status": "Active"}, {"cells": ["Membership website", "Barista club annual", "Membership access", "$199.00"], "status": "Renewal"}]},
+        {"id": "orders", "label": "Orders", "heading": "Unified digital order queue", "description": "Operate orders while preserving the owning website and delivery contract.", "action": "Create order", "actions": ["Create order", "Mark as paid", "Cancel order"], "columns": ["Website", "Order", "Customer", "Product"], "rows": [{"cells": ["Course website", "CRS-8821", "Morgan Park", "Advanced roasting class"], "status": "Delivered"}, {"cells": ["Membership website", "MEM-2910", "Taylor Kim", "Barista club annual"], "status": "Pending delivery"}]},
+        {"id": "customers", "label": "Customers", "heading": "Unified customer access", "description": "Review active access by customer and website.", "action": "Add customer", "actions": ["Add customer", "Edit customer", "Archive customer"], "columns": ["Website", "Customer", "Rights", "Support status"], "rows": [{"cells": ["Course website", "Morgan Park", "3", "Healthy"], "status": "Active"}, {"cells": ["Downloads website", "Riley Fox", "5", "Download bounced"], "status": "Needs attention"}]},
+        {"id": "deliveries", "label": "Deliveries", "heading": "Unified delivery centre", "description": "Resolve access grants, downloads, and membership activations by website.", "action": "Deliver selected", "actions": ["Create delivery", "Deliver selected", "Retry delivery", "Cancel delivery"], "columns": ["Website", "Customer", "Delivery", "Expires"], "rows": [{"cells": ["Membership website", "Taylor Kim", "Membership activation", "2027-07-23"], "status": "Pending"}, {"cells": ["Downloads website", "Riley Fox", "Template download", "Never"], "status": "Retry"}]}
+      ]
+    },
+    {
+      "id": "courses",
+      "label": "Course website",
+      "caption": "Online course storefront with curriculum access, expiry windows, and learner support.",
+      "badge": "Courses",
+      "metrics": [
+        {"label": "Courses", "value": "11", "source": "Course catalogue"},
+        {"label": "Pending grants", "value": "3", "source": "Delivery queue"},
+        {"label": "Active learners", "value": "146", "source": "Entitlements"}
+      ],
+      "tabs": [
+        {"id": "overview", "label": "Overview", "heading": "Course website snapshot", "description": "Monitor course access, learner status, and fulfilment exceptions.", "action": "Refresh course site", "columns": ["Metric", "Current value", "Owner table"], "rows": [{"cells": ["Courses", "11", "products"], "status": "Live"}, {"cells": ["Pending access grants", "3", "deliveries"], "status": "Attention"}, {"cells": ["Active learners", "146", "entitlements"], "status": "Live"}]},
+        {"id": "products", "label": "Products", "heading": "Course catalogue", "description": "Manage course duration, access period, and price.", "action": "Create course", "actions": ["Add product", "Edit product", "Archive product"], "columns": ["Course", "Access period", "Price", "Lessons"], "rows": [{"cells": ["Advanced roasting class", "365 days", "$89.00", "24"], "status": "Active"}, {"cells": ["Latte art basics", "180 days", "$39.00", "12"], "status": "Active"}]},
+        {"id": "orders", "label": "Orders", "heading": "Course order queue", "description": "Connect course orders to learner access grants.", "action": "Create course order", "actions": ["Create order", "Mark as paid", "Cancel order"], "columns": ["Order", "Learner", "Course", "Total"], "rows": [{"cells": ["CRS-8821", "Morgan Park", "Advanced roasting class", "$89.00"], "status": "Delivered"}, {"cells": ["CRS-8822", "Taylor Kim", "Latte art basics", "$39.00"], "status": "Pending delivery"}]},
+        {"id": "customers", "label": "Customers", "heading": "Learner access", "description": "Review learners, course rights, and support status.", "action": "Add learner", "actions": ["Add customer", "Edit customer", "Archive customer"], "columns": ["Learner", "Active courses", "Last progress", "Support"], "rows": [{"cells": ["Morgan Park", "3", "82%", "Healthy"], "status": "Active"}, {"cells": ["Taylor Kim", "1", "Not started", "Access pending"], "status": "Needs attention"}]},
+        {"id": "deliveries", "label": "Deliveries", "heading": "Course access delivery", "description": "Grant, retry, or revoke learner access.", "action": "Grant course access", "actions": ["Create delivery", "Deliver selected", "Retry delivery", "Cancel delivery"], "columns": ["Learner", "Course", "Grant state", "Expires"], "rows": [{"cells": ["Taylor Kim", "Latte art basics", "Pending", "2027-01-23"], "status": "Pending"}, {"cells": ["Morgan Park", "Advanced roasting class", "Granted", "2027-07-23"], "status": "Delivered"}]}
+      ]
+    },
+    {
+      "id": "downloads",
+      "label": "Downloads website",
+      "caption": "Download storefront with file links, license keys, and retryable delivery state.",
+      "badge": "Files",
+      "metrics": [
+        {"label": "Download products", "value": "9", "source": "Download catalogue"},
+        {"label": "Failed sends", "value": "2", "source": "Delivery queue"},
+        {"label": "License keys", "value": "190", "source": "Entitlements"}
+      ],
+      "tabs": [
+        {"id": "overview", "label": "Overview", "heading": "Downloads website snapshot", "description": "Monitor download delivery health and license key usage.", "action": "Refresh download site", "columns": ["Metric", "Current value", "Owner table"], "rows": [{"cells": ["Download products", "9", "products"], "status": "Live"}, {"cells": ["Failed sends", "2", "deliveries"], "status": "Attention"}, {"cells": ["Unused license keys", "42", "entitlements"], "status": "Live"}]},
+        {"id": "products", "label": "Products", "heading": "Download catalogue", "description": "Manage file package, license policy, and price.", "action": "Create download product", "actions": ["Add product", "Edit product", "Archive product"], "columns": ["Product", "File package", "License", "Price"], "rows": [{"cells": ["Cafe menu kit", "ZIP", "Single user", "$12.00"], "status": "Active"}, {"cells": ["Roaster spreadsheet", "XLSX", "Team", "$18.00"], "status": "Active"}]},
+        {"id": "orders", "label": "Orders", "heading": "Download order queue", "description": "Resolve payment and download link delivery state.", "action": "Create download order", "actions": ["Create order", "Mark as paid", "Cancel order"], "columns": ["Order", "Customer", "Download", "Total"], "rows": [{"cells": ["DWN-7712", "Riley Fox", "Cafe menu kit", "$12.00"], "status": "Retry"}, {"cells": ["DWN-7713", "Avery Chen", "Roaster spreadsheet", "$18.00"], "status": "Delivered"}]},
+        {"id": "customers", "label": "Customers", "heading": "Download customers", "description": "Review files, license count, and delivery support context.", "action": "Add download customer", "actions": ["Add customer", "Edit customer", "Archive customer"], "columns": ["Customer", "Downloads", "Licenses", "Last file"], "rows": [{"cells": ["Riley Fox", "4", "5", "Cafe menu kit"], "status": "Needs attention"}, {"cells": ["Avery Chen", "2", "2", "Roaster spreadsheet"], "status": "Active"}]},
+        {"id": "deliveries", "label": "Deliveries", "heading": "Download delivery centre", "description": "Retry download links and issue license keys.", "action": "Send download link", "actions": ["Create delivery", "Deliver selected", "Retry delivery", "Cancel delivery"], "columns": ["Customer", "Package", "Delivery", "Expires"], "rows": [{"cells": ["Riley Fox", "Cafe menu kit", "Email bounced", "Never"], "status": "Retry"}, {"cells": ["Avery Chen", "Roaster spreadsheet", "Delivered", "Never"], "status": "Delivered"}]}
+      ]
+    },
+    {
+      "id": "membership",
+      "label": "Membership website",
+      "caption": "Subscription storefront with annual memberships, renewal state, and gated content.",
+      "badge": "Access",
+      "metrics": [
+        {"label": "Membership plans", "value": "8", "source": "Plan catalogue"},
+        {"label": "Renewal watch", "value": "2", "source": "Entitlements"},
+        {"label": "Active members", "value": "80", "source": "Customers"}
+      ],
+      "tabs": [
+        {"id": "overview", "label": "Overview", "heading": "Membership website snapshot", "description": "Track plan access, renewals, and member delivery state.", "action": "Refresh membership site", "columns": ["Metric", "Current value", "Owner table"], "rows": [{"cells": ["Membership plans", "8", "products"], "status": "Live"}, {"cells": ["Renewal watch", "2", "entitlements"], "status": "Attention"}, {"cells": ["Active members", "80", "customers"], "status": "Live"}]},
+        {"id": "products", "label": "Products", "heading": "Membership catalogue", "description": "Manage access tiers, renewal rules, and price.", "action": "Create membership plan", "actions": ["Add product", "Edit product", "Archive product"], "columns": ["Plan", "Access", "Renewal", "Price"], "rows": [{"cells": ["Barista club annual", "Full library", "Annual", "$199.00"], "status": "Renewal"}, {"cells": ["Cafe manager monthly", "Operations library", "Monthly", "$29.00"], "status": "Active"}]},
+        {"id": "orders", "label": "Orders", "heading": "Membership order queue", "description": "Activate paid plans and handle cancelled renewals.", "action": "Create membership order", "actions": ["Create order", "Mark as paid", "Cancel order"], "columns": ["Order", "Member", "Plan", "Total"], "rows": [{"cells": ["MEM-2910", "Taylor Kim", "Barista club annual", "$199.00"], "status": "Pending delivery"}, {"cells": ["MEM-2911", "Jordan Lee", "Cafe manager monthly", "$29.00"], "status": "Delivered"}]},
+        {"id": "customers", "label": "Customers", "heading": "Member access file", "description": "Review active plans, renewal window, and support state.", "action": "Add member", "actions": ["Add customer", "Edit customer", "Archive customer"], "columns": ["Member", "Plan", "Renews", "Support"], "rows": [{"cells": ["Taylor Kim", "Barista club annual", "2027-07-23", "Activation pending"], "status": "Needs attention"}, {"cells": ["Jordan Lee", "Cafe manager monthly", "2026-08-23", "Healthy"], "status": "Active"}]},
+        {"id": "deliveries", "label": "Deliveries", "heading": "Membership activation centre", "description": "Activate, retry, or cancel gated access.", "action": "Activate membership", "actions": ["Create delivery", "Deliver selected", "Retry delivery", "Cancel delivery"], "columns": ["Member", "Plan", "Access state", "Expires"], "rows": [{"cells": ["Taylor Kim", "Barista club annual", "Pending", "2027-07-23"], "status": "Pending"}, {"cells": ["Jordan Lee", "Cafe manager monthly", "Active", "2026-08-23"], "status": "Delivered"}]}
+      ]
+    }
+  ]
+}

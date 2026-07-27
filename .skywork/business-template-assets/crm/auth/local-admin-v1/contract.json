@@ -1,0 +1,44 @@
+{
+  "schemaVersion": 1,
+  "id": "crm-local-admin-v1",
+  "accessMode": "local-admin-v1",
+  "tables": ["crm_user", "crm_session", "crm_account", "crm_verification", "crm_auth_bootstrap", "crm_audit_log"],
+  "bootstrap": {
+    "route": "/api/crm-auth/bootstrap",
+    "entryPage": "/auth",
+    "firstSuccessfulUserRole": "admin",
+    "claimRule": "Use a conditional singleton-row update; never determine the first administrator with SELECT COUNT(user).",
+    "publicBetterAuthSignup": "blocked",
+    "productionSeedAdmin": false
+  },
+  "administration": {
+    "route": "/api/crm-users",
+    "page": "/settings/users",
+    "clientRouteGuard": "AdminGuard",
+    "navigation": "admin-only",
+    "createUsers": "admin-only",
+    "lastActiveAdminProtection": true,
+    "deactivationRevokesSessions": true,
+    "auditRequired": true
+  },
+  "validation": {
+    "requiredChecks": [
+      "concurrent-bootstrap-single-admin",
+      "direct-public-signup-closed",
+      "admin-create-user",
+      "non-admin-forbidden",
+      "last-active-admin-protected",
+      "deactivation-revokes-sessions",
+      "audit-persistence",
+      "auth-entry-page-route",
+      "admin-users-page-route",
+      "admin-users-page-admin-guard",
+      "admin-users-navigation-admin-only"
+    ],
+    "forbiddenChecks": [
+      "create production user through deployed API",
+      "insert production user through online database",
+      "call deployed CRM runtime API after publish"
+    ]
+  }
+}

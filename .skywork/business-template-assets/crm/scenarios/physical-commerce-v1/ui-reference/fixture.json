@@ -1,0 +1,146 @@
+{
+  "templateId": "physical-commerce-v1",
+  "eyebrow": "JINGJIE OPERATIONS",
+  "title": "Multi-website commerce control console",
+  "description": "Switch between connected websites and operate the products, customers, orders, and inventory owned by each site.",
+  "tabs": [
+    {
+      "id": "overview",
+      "label": "Overview",
+      "heading": "Operating snapshot",
+      "description": "Use live queries for order volume, low-stock products, and customer activity.",
+      "action": "Refresh view",
+      "columns": ["Metric", "Current value", "Source"],
+      "rows": [
+        {"cells": ["Open orders", "18", "orders"], "status": "Live"},
+        {"cells": ["Low-stock products", "4", "inventory"], "status": "Attention"}
+      ]
+    },
+    {
+      "id": "products",
+      "label": "Products",
+      "heading": "Product catalogue",
+      "description": "Manage sellable status, inventory, and fulfilment.",
+      "action": "Add product",
+      "actions": ["Add product", "Edit product", "Archive product"],
+      "columns": ["Product", "Inventory", "Price"],
+      "rows": [
+        {"cells": ["Single-origin coffee beans", "38", "$24.00"], "status": "Active"},
+        {"cells": ["Pour-over starter kit", "6", "$72.00"], "status": "Draft"}
+      ]
+    },
+    {
+      "id": "orders",
+      "label": "Orders",
+      "heading": "Order fulfilment",
+      "description": "Track payment, shipment, and fulfilment progress.",
+      "action": "Create order",
+      "actions": ["Create order", "Confirm order", "Mark as shipped", "Mark as delivered", "Cancel order"],
+      "columns": ["Order", "Customer", "Total"],
+      "rows": [
+        {"cells": ["PC-1042", "Avery Chen", "$48.00"], "status": "Awaiting shipment"},
+        {"cells": ["PC-1041", "Jordan Lee", "$72.00"], "status": "Delivered"}
+      ]
+    },
+    {
+      "id": "customers",
+      "label": "Customers",
+      "heading": "Customer relationships",
+      "description": "Review purchase history and repeat activity.",
+      "action": "Add customer",
+      "actions": ["Add customer", "Edit customer", "Archive customer"],
+      "columns": ["Customer", "Orders", "Lifetime value"],
+      "rows": [
+        {"cells": ["Avery Chen", "12", "$386.00"], "status": "VIP"},
+        {"cells": ["Jordan Lee", "4", "$124.00"], "status": "Active"}
+      ]
+    },
+    {
+      "id": "inventory",
+      "label": "Inventory",
+      "heading": "Stock control",
+      "description": "Review available stock and resolve replenishment thresholds.",
+      "action": "Adjust stock",
+      "actions": ["Adjust stock", "Reserve stock", "Release reserved stock"],
+      "columns": ["Product", "Available", "Reorder level"],
+      "rows": [
+        {"cells": ["Single-origin coffee beans", "38", "12"], "status": "Healthy"},
+        {"cells": ["Pour-over starter kit", "6", "10"], "status": "Reorder"}
+      ]
+    }
+  ],
+  "sites": [
+    {
+      "id": "all",
+      "label": "All websites",
+      "caption": "Aggregated store, customer, order, and inventory tables across every active website.",
+      "badge": "Total",
+      "metrics": [
+        {"label": "Sellable products", "value": "35", "source": "Unified product tables"},
+        {"label": "Pending orders", "value": "6", "source": "Order workflow"},
+        {"label": "Paid revenue", "value": "JPY 524,900", "source": "Settled orders"}
+      ],
+      "tabs": [
+        {"id": "overview", "label": "Overview", "heading": "All-website operating snapshot", "description": "Roll up product, order, customer, and inventory state from every website.", "action": "Refresh all websites", "columns": ["Website", "Products", "Orders", "Risk"], "rows": [{"cells": ["Overseas eyewear", "14", "3 open", "FX margin watch"], "status": "Live"}, {"cells": ["Mainland eyewear", "12", "2 open", "Replenish titanium frames"], "status": "Attention"}, {"cells": ["Pet accessories", "9", "1 open", "Healthy"], "status": "Live"}]},
+        {"id": "products", "label": "Products", "heading": "Unified product catalogue", "description": "Compare table shape and product state across every connected website.", "action": "Create shared product", "actions": ["Create product", "Edit product", "Archive product"], "columns": ["Website", "Product", "Price", "Stock"], "rows": [{"cells": ["Overseas eyewear", "Polar mist frame", "JPY 8,111", "10"], "status": "Active"}, {"cells": ["Mainland eyewear", "Titanium daily 012", "CNY 899", "18"], "status": "Recommended"}, {"cells": ["Pet accessories", "Cloud walk harness", "CNY 129", "32"], "status": "Active"}]},
+        {"id": "orders", "label": "Orders", "heading": "Unified fulfilment queue", "description": "Operate order status while keeping website ownership visible.", "action": "Create order", "actions": ["Create order", "Confirm order", "Cancel order"], "columns": ["Website", "Order", "Customer", "Total"], "rows": [{"cells": ["Overseas eyewear", "JJ20260723A1A1C7", "Mika Tan", "JPY 8,111"], "status": "Cancelled"}, {"cells": ["Mainland eyewear", "JJ20260723BBA66D", "Lin Yue", "CNY 1,298"], "status": "Pending confirmation"}]},
+        {"id": "customers", "label": "Customers", "heading": "Unified customer assets", "description": "View customers by website while preserving each site's field contract.", "action": "Add customer", "actions": ["Add customer", "Edit customer", "Archive customer"], "columns": ["Website", "Customer", "Segment", "Last order"], "rows": [{"cells": ["Overseas eyewear", "Mika Tan", "Export buyer", "Polar mist frame"], "status": "VIP"}, {"cells": ["Pet accessories", "Chris Wong", "Dog owner", "Cloud walk harness"], "status": "Active"}]},
+        {"id": "inventory", "label": "Inventory", "heading": "Unified replenishment board", "description": "Resolve stock risk by website and warehouse.", "action": "Adjust stock", "actions": ["Adjust stock", "Reserve stock", "Release reserved stock"], "columns": ["Website", "Stock item", "Available", "Threshold"], "rows": [{"cells": ["Mainland eyewear", "Titanium daily 012", "18", "10"], "status": "Healthy"}, {"cells": ["Overseas eyewear", "Polar mist frame", "10", "12"], "status": "Reorder"}]}
+      ]
+    },
+    {
+      "id": "overseas",
+      "label": "Overseas eyewear",
+      "caption": "Export storefront with JPY pricing, international customers, and region-specific inventory.",
+      "badge": "Global",
+      "metrics": [
+        {"label": "Sellable products", "value": "14", "source": "Export catalogue"},
+        {"label": "Awaiting customs", "value": "3", "source": "Order fulfilment"},
+        {"label": "Revenue", "value": "JPY 218,700", "source": "Paid orders"}
+      ],
+      "tabs": [
+        {"id": "overview", "label": "Overview", "heading": "Overseas website snapshot", "description": "Track export stock, currency pricing, and overseas order exceptions.", "action": "Refresh overseas site", "columns": ["Metric", "Current value", "Owner table"], "rows": [{"cells": ["Export products", "14", "products"], "status": "Live"}, {"cells": ["Open export orders", "3", "orders"], "status": "Attention"}, {"cells": ["International customers", "18", "customers"], "status": "Live"}]},
+        {"id": "products", "label": "Products", "heading": "Export eyewear catalogue", "description": "Manage localized product copy, JPY price, and export stock.", "action": "Create export product", "actions": ["Create product", "Edit product", "Archive product"], "columns": ["Product", "JPY price", "Export stock", "Material"], "rows": [{"cells": ["Polar mist frame", "JPY 8,111", "10", "Beta titanium"], "status": "Active"}, {"cells": ["Aurora square", "JPY 8,991", "18", "Titanium alloy"], "status": "Recommended"}]},
+        {"id": "orders", "label": "Orders", "heading": "Export order queue", "description": "Confirm export orders, customs status, and customer region.", "action": "Create export order", "actions": ["Create order", "Confirm order", "Cancel order"], "columns": ["Order", "Customer", "Region", "Total"], "rows": [{"cells": ["JJ20260723A1A1C7", "Mika Tan", "Singapore", "JPY 8,111"], "status": "Cancelled"}, {"cells": ["JJ20260723C22F0A", "Noah Park", "Seoul", "JPY 17,982"], "status": "Awaiting customs"}]},
+        {"id": "customers", "label": "Customers", "heading": "International customer file", "description": "Review region, communication language, and eyewear preferences.", "action": "Add export customer", "actions": ["Add customer", "Edit customer", "Archive customer"], "columns": ["Customer", "Region", "Language", "Last product"], "rows": [{"cells": ["Mika Tan", "Singapore", "English", "Polar mist frame"], "status": "VIP"}, {"cells": ["Noah Park", "Seoul", "Korean", "Aurora square"], "status": "Active"}]},
+        {"id": "inventory", "label": "Inventory", "heading": "Export stock control", "description": "Reserve stock for export fulfilment without affecting domestic stock.", "action": "Adjust export stock", "actions": ["Adjust stock", "Reserve stock", "Release reserved stock"], "columns": ["Product", "Available", "Reserved", "Reorder level"], "rows": [{"cells": ["Polar mist frame", "10", "2", "12"], "status": "Reorder"}, {"cells": ["Aurora square", "18", "1", "10"], "status": "Healthy"}]}
+      ]
+    },
+    {
+      "id": "mainland",
+      "label": "Mainland eyewear",
+      "caption": "Domestic storefront with CNY pricing, local orders, and warehouse replenishment.",
+      "badge": "Local",
+      "metrics": [
+        {"label": "Sellable products", "value": "12", "source": "Domestic catalogue"},
+        {"label": "Pending confirmation", "value": "2", "source": "Order workflow"},
+        {"label": "Revenue", "value": "CNY 18,640", "source": "Paid orders"}
+      ],
+      "tabs": [
+        {"id": "overview", "label": "Overview", "heading": "Mainland website snapshot", "description": "Track domestic orders, local catalogue, and warehouse stock.", "action": "Refresh mainland site", "columns": ["Metric", "Current value", "Owner table"], "rows": [{"cells": ["Domestic products", "12", "products"], "status": "Live"}, {"cells": ["Pending confirmation", "2", "orders"], "status": "Attention"}, {"cells": ["Low-stock SKUs", "1", "inventory"], "status": "Attention"}]},
+        {"id": "products", "label": "Products", "heading": "Domestic eyewear catalogue", "description": "Manage CNY price, local labels, and domestic inventory.", "action": "Create domestic product", "actions": ["Create product", "Edit product", "Archive product"], "columns": ["Product", "CNY price", "Warehouse stock", "Tag"], "rows": [{"cells": ["Titanium daily 012", "CNY 899", "18", "Commuter"], "status": "Recommended"}, {"cells": ["Architect frame", "CNY 1,099", "12", "New season"], "status": "Active"}]},
+        {"id": "orders", "label": "Orders", "heading": "Domestic order queue", "description": "Confirm local orders and local delivery progress.", "action": "Create domestic order", "actions": ["Create order", "Confirm order", "Mark as delivered", "Cancel order"], "columns": ["Order", "Customer", "City", "Total"], "rows": [{"cells": ["JJ20260723BBA66D", "Lin Yue", "Shanghai", "CNY 1,298"], "status": "Pending confirmation"}, {"cells": ["JJ20260723F91D20", "Zhou Ran", "Hangzhou", "CNY 899"], "status": "Paid"}]},
+        {"id": "customers", "label": "Customers", "heading": "Domestic customer file", "description": "Review purchase history, city, and local preference tags.", "action": "Add domestic customer", "actions": ["Add customer", "Edit customer", "Archive customer"], "columns": ["Customer", "City", "Orders", "Preference"], "rows": [{"cells": ["Lin Yue", "Shanghai", "5", "Lightweight"], "status": "Active"}, {"cells": ["Zhou Ran", "Hangzhou", "3", "Square frame"], "status": "Returning"}]},
+        {"id": "inventory", "label": "Inventory", "heading": "Domestic warehouse stock", "description": "Adjust stock and replenishment level for local fulfilment.", "action": "Adjust domestic stock", "actions": ["Adjust stock", "Reserve stock", "Release reserved stock"], "columns": ["Product", "Available", "Reserved", "Reorder level"], "rows": [{"cells": ["Titanium daily 012", "18", "4", "10"], "status": "Healthy"}, {"cells": ["Architect frame", "12", "1", "12"], "status": "Watch"}]}
+      ]
+    },
+    {
+      "id": "pet",
+      "label": "Pet accessories",
+      "caption": "Pet-oriented website with accessory catalogue, pet profiles, and owner relationships.",
+      "badge": "Pet",
+      "metrics": [
+        {"label": "Sellable products", "value": "9", "source": "Pet catalogue"},
+        {"label": "Open orders", "value": "1", "source": "Pet orders"},
+        {"label": "Active pet profiles", "value": "24", "source": "Customer pets"}
+      ],
+      "tabs": [
+        {"id": "overview", "label": "Overview", "heading": "Pet website snapshot", "description": "Track pet products, pet-owner customers, and stock for accessories.", "action": "Refresh pet site", "columns": ["Metric", "Current value", "Owner table"], "rows": [{"cells": ["Pet products", "9", "products"], "status": "Live"}, {"cells": ["Open pet orders", "1", "orders"], "status": "Live"}, {"cells": ["Pet profiles", "24", "customer_pets"], "status": "Live"}]},
+        {"id": "products", "label": "Products", "heading": "Pet accessory catalogue", "description": "Manage accessory sizes, pet type, and pet-safe material notes.", "action": "Create pet product", "actions": ["Create product", "Edit product", "Archive product"], "columns": ["Product", "Pet type", "Price", "Stock"], "rows": [{"cells": ["Cloud walk harness", "Dog", "CNY 129", "32"], "status": "Active"}, {"cells": ["Quiet nest carrier", "Cat", "CNY 269", "8"], "status": "Limited"}]},
+        {"id": "orders", "label": "Orders", "heading": "Pet order queue", "description": "Review pet-owner orders and size-sensitive fulfilment state.", "action": "Create pet order", "actions": ["Create order", "Confirm order", "Cancel order"], "columns": ["Order", "Owner", "Pet", "Total"], "rows": [{"cells": ["PET20260723A9", "Chris Wong", "Momo", "CNY 129"], "status": "Paid"}, {"cells": ["PET20260723B2", "Dana Li", "Sesame", "CNY 269"], "status": "Awaiting confirmation"}]},
+        {"id": "customers", "label": "Customers", "heading": "Pet-owner relationships", "description": "Manage owner profile, pet profile, and repeat purchase notes.", "action": "Add pet owner", "actions": ["Add customer", "Edit customer", "Archive customer"], "columns": ["Owner", "Pet", "Pet type", "Last purchase"], "rows": [{"cells": ["Chris Wong", "Momo", "Dog", "Cloud walk harness"], "status": "Active"}, {"cells": ["Dana Li", "Sesame", "Cat", "Quiet nest carrier"], "status": "New"}]},
+        {"id": "inventory", "label": "Inventory", "heading": "Pet accessory stock", "description": "Track stock by pet type and size so operators do not oversell.", "action": "Adjust pet stock", "actions": ["Adjust stock", "Reserve stock", "Release reserved stock"], "columns": ["Product", "Size", "Available", "Reorder level"], "rows": [{"cells": ["Cloud walk harness", "M", "32", "8"], "status": "Healthy"}, {"cells": ["Quiet nest carrier", "Standard", "8", "10"], "status": "Reorder"}]}
+      ]
+    }
+  ]
+}

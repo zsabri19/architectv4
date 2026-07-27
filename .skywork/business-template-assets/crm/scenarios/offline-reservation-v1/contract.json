@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "templateId": "offline-reservation-v1",
+  "kind": "crm-scenario-reference",
+  "purpose": "Reference capabilities for mapping existing Website-owned reservation implementations; never a storage schema or business-rule authority.",
+  "referenceEntities": ["customers", "locations", "services", "time_slots", "reservations"],
+  "operatorCapabilities": {
+    "customers": ["list", "create", "update", "archive"],
+    "locations": ["list", "create", "update", "archive"],
+    "services": ["list", "create", "update", "archive"],
+    "time_slots": ["list", "create", "update", "close", "reopen"],
+    "reservations": ["list", "read", "create", "update", "cancel", "check_in", "complete", "mark_no_show"]
+  },
+  "invariantTopics": ["reservation lifecycle", "capacity and time-slot availability", "check-in and no-show rules", "cancellation behavior"],
+  "requiredScenarioChecks": ["reservation-transition-invariants", "capacity-invariants"]
+}

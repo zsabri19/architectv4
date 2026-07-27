@@ -1,0 +1,27 @@
+{
+  "name": "zeeshan-authority-sanity",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "sanity dev",
+    "start": "sanity start",
+    "build": "sanity build",
+    "deploy": "sanity deploy",
+    "schema:extract": "sanity schema extract --enforce-required-fields",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@sanity/client": "^7.25.0",
+    "@sanity/vision": "^6.6.0",
+    "groq": "^4.10.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "sanity": "^6.6.0",
+    "styled-components": "^6.1.19"
+  },
+  "devDependencies": {
+    "@types/react": "^19.2.0",
+    "typescript": "^5.9.3"
+  }
+}

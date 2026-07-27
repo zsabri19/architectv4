@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 2,
+  "id": "crm-website-preset-v1",
+  "projectMode": "standard-self-host-website",
+  "entryPath": "/",
+  "agentGuide": {
+    "templatePath": "AGENTS.crm.md",
+    "generatedPath": "AGENTS.crm.md"
+  },
+  "runtimeContractPath": "runtime-contract.json",
+  "sourceRegistrySchemaPath": "source-registry.schema.json",
+  "auth": {
+    "defaultMode": "local-admin-v1",
+    "presetPath": "auth/local-admin-v1",
+    "contractPath": "auth/local-admin-v1/contract.json",
+    "overlayRoot": "auth/local-admin-v1/overlay"
+  },
+  "validation": {
+    "inspectorPath": "validation/inspect-crm-state.mjs",
+    "inspectorTestPath": "validation/inspect-crm-state.test.mjs",
+    "generatedInspectorPath": "scripts/inspect-crm-state.mjs"
+  },
+  "materialization": {
+    "deletePaths": [
+      "apps/server/migrations/000_auth.sql",
+      "apps/server/migrations/001_init.sql",
+      "apps/server/migrations/002_storage_files.sql",
+      "apps/server/routes/email-verification.route.ts",
+      "apps/server/routes/storage.route.ts",
+      "apps/server/routes/third-party-google-auth.route.ts",
+      "apps/server/routes/todos.route.ts",
+      "apps/server/services/s3_storage.ts",
+      "apps/server/services/third-party-google-auth.ts",
+      "apps/server/services/todos.ts",
+      "apps/server/__tests__/third-party-google-auth.route.test.ts",
+      "apps/server/__tests__/todos.route.test.ts",
+      "apps/server/_test/infra/auth.test.ts",
+      "apps/server/_test/infra/db.test.ts",
+      "apps/server/_test/infra/email-verification.test.ts"
+    ],
+    "copyContractPathsTo": ".skywork/crm/templates"
+  },
+  "scenarios": [
+    {
+      "id": "physical-commerce-v1",
+      "title": "Physical commerce",
+      "signals": ["physical products", "inventory", "shipping", "order management"],
+      "path": "scenarios/physical-commerce-v1",
+      "contractPath": "contract.json"
+    },
+    {
+      "id": "digital-commerce-v1",
+      "title": "Digital commerce",
+      "signals": ["courses", "downloads", "redemption codes", "entitlements"],
+      "path": "scenarios/digital-commerce-v1",
+      "contractPath": "contract.json"
+    },
+    {
+      "id": "offline-reservation-v1",
+      "title": "Offline reservation",
+      "signals": ["appointments", "locations", "services", "time slots"],
+      "path": "scenarios/offline-reservation-v1",
+      "contractPath": "contract.json"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "schemaVersion": 1,
+  "templateId": "digital-commerce-v1",
+  "kind": "crm-scenario-reference",
+  "purpose": "Reference capabilities for mapping existing Website-owned digital-commerce implementations; never a storage schema or business-rule authority.",
+  "referenceEntities": ["products", "customers", "orders", "entitlements", "deliveries"],
+  "operatorCapabilities": {
+    "products": ["list", "create", "update", "archive"],
+    "customers": ["list", "create", "update", "archive"],
+    "orders": ["list", "read", "create", "mark_paid", "cancel"],
+    "entitlements": ["list", "grant", "revoke", "expire"],
+    "deliveries": ["list", "create", "deliver", "retry", "cancel"]
+  },
+  "invariantTopics": ["payment and entitlement consistency", "entitlement revocation and expiry", "delivery retry and cancellation"],
+  "requiredScenarioChecks": ["entitlement-invariants", "delivery-invariants"]
+}

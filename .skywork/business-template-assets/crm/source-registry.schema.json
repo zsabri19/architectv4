@@ -1,0 +1,101 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://skywork.ai/schemas/crm/source-registry-v1.json",
+  "title": "CRM server source registry",
+  "description": "The single server-only inventory of ordinary Website data sources available to one CRM Website.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "sources"],
+  "properties": {
+    "schemaVersion": { "const": 1 },
+    "sources": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/source" }
+    }
+  },
+  "$defs": {
+    "identifier": {
+      "type": "string",
+      "pattern": "^[A-Za-z_][A-Za-z0-9_]*$",
+      "maxLength": 128
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["websiteId", "name", "supportStatus", "entities"],
+      "properties": {
+        "websiteId": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{8}-[0-9a-f]{4}-7[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$"
+        },
+        "name": { "type": "string", "minLength": 1, "maxLength": 160 },
+        "supportStatus": { "enum": ["supported", "unsupported"] },
+        "entities": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/entity" }
+        }
+      },
+      "allOf": [
+        {
+          "if": { "properties": { "supportStatus": { "const": "supported" } } },
+          "then": { "properties": { "entities": { "minItems": 1 } } }
+        },
+        {
+          "if": { "properties": { "supportStatus": { "const": "unsupported" } } },
+          "then": { "properties": { "entities": { "maxItems": 0 } } }
+        }
+      ]
+    },
+    "entity": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["entity", "tableName", "schemaPath", "exportName", "primaryKey", "operations"],
+      "properties": {
+        "entity": { "$ref": "#/$defs/identifier" },
+        "tableName": { "$ref": "#/$defs/identifier" },
+        "schemaPath": {
+          "type": "string",
+          "pattern": "^apps/server/db/(?:[A-Za-z0-9_-][A-Za-z0-9_.-]*/)*[A-Za-z0-9_-][A-Za-z0-9_.-]*$",
+          "maxLength": 256
+        },
+        "exportName": { "$ref": "#/$defs/identifier" },
+        "primaryKey": { "$ref": "#/$defs/identifier" },
+        "operations": {
+          "type": "array",
+          "minItems": 1,
+          "uniqueItems": true,
+          "items": { "$ref": "#/$defs/identifier" }
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "schemaVersion": 1,
+      "sources": [
+        {
+          "websiteId": "019f1234-5678-7abc-8def-0123456789ab",
+          "name": "US Store",
+          "supportStatus": "supported",
+          "entities": [
+            {
+              "entity": "orders",
+              "tableName": "orders",
+              "schemaPath": "apps/server/db/schema.ts",
+              "exportName": "orders",
+              "primaryKey": "id",
+              "operations": ["list", "get", "update_status"]
+            }
+          ]
+        },
+        {
+          "websiteId": "019f1234-5678-7abc-8def-0123456789ac",
+          "name": "Legacy Site",
+          "supportStatus": "unsupported",
+          "entities": []
+        }
+      ]
+    }
+  ]
+}
