@@ -231,7 +231,17 @@ export function HashRouter(props: React.ComponentProps<typeof RRD.HashRouter>) {
 }
 
 export function BrowserRouter(props: React.ComponentProps<typeof RRD.BrowserRouter>) {
-  return <RRD.BrowserRouter {...props}>{withBridge(props.children)}</RRD.BrowserRouter>;
+  const basename = React.useMemo(() => {
+    if (props.basename) return props.basename;
+    const host = typeof window !== "undefined" ? window.location.hostname : "";
+    // GitHub Pages project sites are served under /repo-name/; detect the first path segment.
+    if (host.endsWith(".github.io")) {
+      const segments = window.location.pathname.split("/").filter(Boolean);
+      if (segments.length > 0) return "/" + segments[0];
+    }
+    return "/";
+  }, [props.basename]);
+  return <RRD.BrowserRouter {...props} basename={basename}>{withBridge(props.children)}</RRD.BrowserRouter>;
 }
 
 export function MemoryRouter(props: React.ComponentProps<typeof RRD.MemoryRouter>) {

@@ -8,16 +8,9 @@ import {
   engagementRoadmap,
   featuredFrameworks,
   launchInsights,
+  recoveredAssets,
   services,
 } from "@/content/site";
-
-const recoveredAssets = {
-  hero: "/images/recovered/hero-zeeshan.png",
-  book: "/images/recovered/book-cover.png",
-  compass: "/images/recovered/clarityos-compass.jpg",
-  stage: "/images/recovered/speaking-stage.jpg",
-  origin: "/images/recovered/origin-portrait.jpg",
-} as const;
 
 const Index = () => {
   return (
@@ -370,7 +363,7 @@ const Index = () => {
             <p>
               The recovered 12-page profile is available as a direct source document while its rights, claims, and production use are reviewed for the new media system.
             </p>
-            <a className="button button-primary" href="/executive-advisory-profile-2026.pdf" download>
+            <a className="button button-primary" href={recoveredAssets.profile} download>
               Download profile <Download aria-hidden="true" />
             </a>
           </div>

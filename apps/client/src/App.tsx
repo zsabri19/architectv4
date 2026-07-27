@@ -21,6 +21,9 @@ import {
 
 const queryClient = new QueryClient();
 
+const base = import.meta.env.BASE_URL || "/";
+const basename = base === "/" ? "/" : base.replace(/\/$/, "");
+
 /* @section: reusable-detail-route-adapters */
 const FrameworkDetailRoute = () => <FrameworkDetailPage slug={useParams<{ slug: string }>().slug ?? ""} />;
 const InsightDetailRoute = () => <InsightDetailPage slug={useParams<{ slug: string }>().slug ?? ""} />;
@@ -30,7 +33,7 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
       <Sonner />
-      <BrowserRouter>
+      <BrowserRouter basename={basename}>
         <Routes>
           <Route path="/" element={<Index />} />
 

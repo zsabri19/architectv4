@@ -224,6 +224,7 @@ export default defineConfig(({ mode, command }) => {
   }
 
   return {
+    base: process.env.GH_PAGES_BASE || "./",
     envDir: "../..",
     server: {
       host: "::",

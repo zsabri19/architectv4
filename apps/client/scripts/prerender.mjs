@@ -287,9 +287,10 @@ async function run() {
     const { componentTagger } = await import("lovable-tagger");
     await build({
       configFile: false,
+      base: process.env.GH_PAGES_BASE || "/",
       logLevel: "error",
       plugins: [createPrerenderSafeRenderPlugin(cwd), componentTagger(), reactPlugin()],
-      resolve: { alias: { "@": resolve(cwd, "src") } },
+      resolve: { alias: { "@": resolve(cwd, "src"), "react-router-dom": resolve(cwd, "src/lib/react-router-dom-proxy.tsx"), "react-router-dom-original": "react-router-dom" } },
       build: {
         ssr: true,
         rollupOptions: {
@@ -304,8 +305,10 @@ async function run() {
     });
 
     const { Window } = await import("happy-dom");
+    const ssrBase = (process.env.GH_PAGES_BASE || "").replace(/\/$/, "");
+    const ssrUrl = ssrBase ? `http://localhost${ssrBase}/` : "http://localhost:3000";
     window = new Window({
-      url: "http://localhost:3000",
+      url: ssrUrl,
       settings: {
         disableJavaScriptFileLoading: true,
         disableJavaScriptEvaluation: true,

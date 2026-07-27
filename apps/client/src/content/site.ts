@@ -4,7 +4,7 @@ export const siteIdentity = {
   role: "Crisis-to-Clarity Architect",
   methodology: "ClarityOS",
   tagline: "The Human OS before the System OS.",
-  canonicalOrigin: "https://architect.global-mkts.com",
+  canonicalOrigin: "https://zsabri19.github.io/architectv4",
   email: "zeeshan@global-mkts.com",
   youtube: "https://www.youtube.com/@ZeeshanSabri83",
   instagram: "https://www.instagram.com/zsabri/",
@@ -71,14 +71,14 @@ export const routeMetadata: Record<string, RouteMeta> = {
 };
 
 export const recoveredAssets = {
-  hero: "/images/recovered/hero-zeeshan.png",
-  origin: "/images/recovered/origin-portrait.jpg",
-  portraitSuit: "/images/recovered/portrait-suit.jpg",
-  book: "/images/recovered/book-cover.png",
-  compass: "/images/recovered/clarityos-compass.jpg",
-  mirror: "/images/recovered/clarity-mirror.jpg",
-  stage: "/images/recovered/speaking-stage.jpg",
-  profile: "/executive-advisory-profile-2026.pdf",
+  hero: "./images/recovered/hero-zeeshan.png",
+  origin: "./images/recovered/origin-portrait.jpg",
+  portraitSuit: "./images/recovered/portrait-suit.jpg",
+  book: "./images/recovered/book-cover.png",
+  compass: "./images/recovered/clarityos-compass.jpg",
+  mirror: "./images/recovered/clarity-mirror.jpg",
+  stage: "./images/recovered/speaking-stage.jpg",
+  profile: "./executive-advisory-profile-2026.pdf",
 } as const;
 
 export const clarityComponents = [
