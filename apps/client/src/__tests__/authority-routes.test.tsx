@@ -18,7 +18,7 @@ describe("approved authority routes", () => {
   it.each([
     ["/the-architect", "The method began before it had a name."],
     ["/clarityos", "The human conditions beneath transformation can be diagnosed."],
-    ["/book", "A memoir beyond techniques."],
+    ["/book", "A Memoir Beyond Techniques"],
     ["/frameworks", "Fourteen pillars for consequential work."],
     ["/services", "A clear entry point for each level of responsibility."],
     ["/insights", "Field notes for the human layer."],

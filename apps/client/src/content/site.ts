@@ -609,3 +609,214 @@ export const mediaReferences = [
   { type: "Verified channel", title: "Instagram", description: "The verified profile reference recovered from the current site.", href: siteIdentity.instagram },
   { type: "Source document", title: "Executive Advisory Profile — 2026 Edition", description: "Recovered 12-page A4 profile available as the current boardroom reference document.", href: recoveredAssets.profile },
 ] as const;
+
+/* @section: book-memoir-content */
+export const AWARD_URL =
+  "https://news.marketersmedia.com/paradigm-shift-in-gcc-transformation-zeeshan-sabri-wins-entrepreneurial-excellence-award-for-pioneering-clarityos-methodology/89181228";
+export const AWARD_LABEL =
+  "Winner, Entrepreneurial Excellence Award — Founders 2.0 Conference, Dubai, December 2025";
+
+export const bookAbout = {
+  headline: "A Story of Clarity Forged in Crisis",
+  lead: "In 1990, when war forced his family from Kuwait to Pakistan, Zeeshan Sabri experienced exile before he understood the word.",
+  body: [
+    "Those early years of uncertainty became the compass for a life dedicated to building clarity in chaos, dignity in work, and governance in transformation. This memoir blends personal narrative with professional frameworks forged in Fortune 500 boardrooms and national-scale projects across the Gulf.",
+    "From Huawei and Motorola to the Government of Oman, the journey captures what it takes to lead under pressure, reframe procurement into progress, and design frameworks like the Pyramid and Beyond Techniques that anchor transformation in both people and systems.",
+  ],
+  quote: "True transformation starts where trust has been broken and dignity restored.",
+} as const;
+
+export const bookPress = {
+  eyebrow: "As Seen In MarketersMEDIA — Founders 2.0 Conference, Dubai, December 2025",
+  quote: "We are seeing a maturity shift in the GCC. Leaders are realizing that you cannot install a First World governance system on a broken human operating system.",
+  attribution: "Zeeshan Sabri, Founders 2.0 Conference, Dubai",
+  description:
+    "The Entrepreneurial Excellence Award recognized ClarityOS as the world's first Pre-Governance Operating System, currently deployed across national-scale digital banking, telecom, and defense procurement transformations serving 5 million+ users. Press coverage published January 29, 2026.",
+  cta: "Read the Press Release",
+} as const;
+
+export const bookPrologue = [
+  "Muscat, December 2025. I was sitting in my home office, thousands of kilometers from the Founders 2.0 Conference stage in Dubai. Visa logistics and travel constraints had made the trip impossible — a familiar pattern for someone who has spent a career navigating borders that do not always open on schedule. So I watched the ceremony through a screen, the way I had learned to participate in a world that does not always make space for you at the table.",
+  "When they called my name for the Entrepreneurial Excellence Award, the applause was distant, filtered through a video feed. But what I felt was immediate. Not pride, exactly — something closer to recognition. Not the kind the audience was giving me, but the kind you give yourself when the pattern you have been building for decades is finally seen by others.",
+  "They don't give awards for playing it safe. Crisis forces clarity that comfort never could.",
+  "The award was for ClarityOS — a methodology the citation described as the world's first Pre-Governance Operating System. But ClarityOS did not begin in a strategy session or a product lab. It began on a night in 1990, in a city under siege, in the grip of a mother trying to keep her family together as the world she had built dissolved around her.",
+  "Kuwait, August 2, 1990. The sirens started at dusk. Not the test alarms we had grown accustomed to in Kuwait City, but the real ones — the kind that turned ordinary evenings into something you remember for the rest of your life. I was young, barely old enough to understand the geopolitics of what was happening, but old enough to feel the weight of it in my mother's grip as we moved through corridors lit by emergency generators.",
+  "Alhamdulillah. The journey continues.",
+] as const;
+
+export type BookPart = {
+  part: string;
+  era: string;
+  body: string;
+  quote: string;
+};
+
+export const bookPartDetails: BookPart[] = [
+  {
+    part: "Part I: Roots & Resilience",
+    era: "Kuwait & Pakistan, 1980s to 1992",
+    body: "Iraq invades Kuwait on August 2, 1990. A Pakistani family loses everything, rebuilds in Pakistan, and returns to a Kuwait scarred by war. Cricket becomes the training ground for discipline and strategy.",
+    quote: "Reinvention is not about discarding the past. It is about taking what is broken and giving it new alignment.",
+  },
+  {
+    part: "Part II: Fortune 500 Foundations",
+    era: "Huawei and Motorola, 2012 to 2025",
+    body: "Breaking into Huawei and Motorola as a Pakistani professional in the Gulf, proving credibility twice over, and turning governance from red tape into an $80M, zero-breach runway.",
+    quote: "Competence opens the door, but credibility keeps you inside.",
+  },
+  {
+    part: "Part III: The GCC Odyssey",
+    era: "Kuwait, Bahrain, Dubai, Qatar, Oman, Saudi Arabia",
+    body: "Reading six GCC markets as distinct cultural ecosystems rather than one monolith, and building cross-border authority in twenty-four months.",
+    quote: "Leaders don't just read contracts. They read cultures.",
+  },
+  {
+    part: "Part IV: Frameworks & Playbooks",
+    era: "The signature methodology",
+    body: "A friend's phone call becomes the Pyramid Framework. Procurement is reframed from a cost center that says no into a strategic growth engine.",
+    quote: "If a framework can't guide a friend, it won't guide a Fortune 500.",
+  },
+  {
+    part: "Part V: Building Movements",
+    era: "Oman and beyond",
+    body: "Dignity-first labor reform at Shams for Services; Oman's first Sharia-compliant digital bank; and AI governance built on interpretation, not replacement, through SuperJet.",
+    quote: "Sustainable change begins where trust is weakest.",
+  },
+  {
+    part: "Part VI: The Leader & The Self",
+    era: "The reckoning",
+    body: "A TriMetrix assessment becomes the Character Compass. The final chapter turns from Fortune 500 case studies to letters written for Nashwa, Amirah, and Ahlam.",
+    quote: "Emotional intelligence is not optional. It is the architecture of sustainable leadership.",
+  },
+];
+
+export type BookTocPart = {
+  num: string;
+  title: string;
+  chapters: string[];
+};
+
+export const bookToc: BookTocPart[] = [
+  { num: "I", title: "Roots & Resilience", chapters: ["Born Between Worlds", "The Gulf War — When Systems Collapse", "Return and Reinvention"] },
+  { num: "II", title: "Fortune 500 Foundations", chapters: ["Breaking Into the Room", "Governance as Runway", "The Constraint Advantage"] },
+  { num: "III", title: "The GCC Odyssey", chapters: ["Reading Cultures, Not Just Contracts", "Building Authority Across Borders"] },
+  { num: "IV", title: "Frameworks & Playbooks", chapters: ["The Pyramid — A Framework for Everything", "Reframing the Function"] },
+  { num: "V", title: "Building Movements", chapters: ["Super-Labor — Dignity at the Root", "Digital Nation-Building in Oman", "AI as Interpreter, Not Replacement"] },
+  { num: "VI", title: "The Leader & The Self", chapters: ["The Character Compass", "Letters to My Daughters"] },
+];
+
+export const bookMetrics = [
+  { n: "90–95%", d: "Pyramid Framework adoption, against a 25% industry standard" },
+  { n: "$80M", d: "Procurement portfolio managed with zero compliance breaches" },
+  { n: "6", d: "GCC markets navigated, cross-border authority built in 24 months" },
+  { n: "75%", d: "Reduction in subcontractor penalties, Super-Labor, Oman" },
+] as const;
+
+export const bookRoiMetrics = [
+  { n: "150–200%", d: "Year One ROI across validated case studies" },
+  { n: "60–85%", d: "Organizational resilience improvement across crisis scenarios" },
+  { n: "80%", d: "Innovation output enhanced through constraint-based approaches" },
+  { n: "90%", d: "Leadership sustainability improvement via Character Compass" },
+] as const;
+
+export type BookRoadmapPhase = {
+  phase: string;
+  frameworks: string;
+  goal: string;
+};
+
+export const bookRoadmap: BookRoadmapPhase[] = [
+  { phase: "Foundation", frameworks: "Resilience, Identity, Crisis Audit, Character Compass", goal: "Stabilize the human operating system before installing systems." },
+  { phase: "Operational", frameworks: "Cultural Mapping, Constraint Innovation, Governance Acceleration, Volatility Navigation", goal: "Build repeatable execution and governance rhythms." },
+  { phase: "Transformation", frameworks: "Pyramid, Function Reframing, Super-Labor, Digital Nation Building", goal: "Scale structural change and cross-cultural authority." },
+  { phase: "Integration", frameworks: "Cross-Cultural Authority, AI Governance Integration", goal: "Embed AI, compliance, and legacy into one coherent system." },
+];
+
+export type BookFrameworkSpotlight = {
+  name: string;
+  quote: string;
+  params: string;
+  result: string;
+};
+
+export const bookFrameworkSpotlights: BookFrameworkSpotlight[] = [
+  {
+    name: "Cultural Ecosystem Mapping",
+    quote: "Leaders don't just read contracts. They read cultures.",
+    params: "Power distance, risk tolerance, innovation outlook, team orientation, process formality",
+    result: "70% improved cross-cultural project success",
+  },
+  {
+    name: "Exile Resilience Framework",
+    quote: "When systems collapse, resilience becomes your first governance framework.",
+    params: "Stabilization, Assessment, Reconstruction, Integration",
+    result: "60% faster crisis response",
+  },
+  {
+    name: "The Pyramid Framework",
+    quote: "Every transformation starts with a stable base.",
+    params: "Foundation, Structure, Alignment, Optimization, Transformation",
+    result: "90–95% adoption vs. 25% industry standard",
+  },
+  {
+    name: "Identity Preservation Under Change",
+    quote: "You adapt, but you do not dissolve.",
+    params: "Core values, adaptive behaviors, boundary management, cultural integration",
+    result: "Maintained organizational identity through 3 major restructurings",
+  },
+  {
+    name: "Constraint Advantage Framework",
+    quote: "Constraints are not obstacles. They are design parameters.",
+    params: "Resource mapping, constraint identification, advantage extraction, leverage points",
+    result: "Turned budget limitations into competitive differentiation",
+  },
+  {
+    name: "Pre-Governance Operating System",
+    quote: "Clarity before scale. Stabilization before optimization.",
+    params: "Structural clarity, sequencing, disciplined thinking, Human OS before System OS",
+    result: "The foundational methodology behind ClarityOS",
+  },
+];
+
+export const bookFourteenFrameworks = [
+  { t: "Exile Resilience", q: "When systems collapse, resilience becomes your first governance framework." },
+  { t: "Cultural Ecosystem Mapping", q: "Leaders don't just read contracts. They read cultures." },
+  { t: "Identity Preservation Under Change", q: "Success is about adapting without losing your core." },
+  { t: "Constraint-Based Innovation", q: "Constraints are not obstacles — they are innovation accelerators." },
+  { t: "Governance as Accelerator", q: "Governance isn't red tape. It's the runway." },
+  { t: "Market Volatility Navigation", q: "Market volatility is strategic intelligence in motion." },
+  { t: "Crisis as Audit", q: "Crisis is not disruption. It is a forced audit." },
+  { t: "The Pyramid (Signature)", q: "If a framework can't guide a friend, it won't guide a Fortune 500." },
+  { t: "Function Reframing", q: "Procurement is not about cutting costs. It's about creating leverage." },
+  { t: "Cross-Cultural Authority", q: "Authority transcends geography when built on competence and cultural respect." },
+  { t: "Super-Labor", q: "Sustainable change begins where trust is weakest." },
+  { t: "Digital Nation Building", q: "Nation-building begins with solving frustrations you've lived." },
+  { t: "AI Governance Integration", q: "Technology becomes transformation only when leaders act as interpreters." },
+  { t: "Character Compass", q: "Emotional intelligence is the architecture of sustainable leadership." },
+] as const;
+
+export const bookWhyAudiences = [
+  "For leaders who sense that technical frameworks alone are not enough — who know that sustainable transformation requires character, cultural intelligence, and the courage to start at the foundation.",
+  "For anyone who has ever been the outsider in the room, the one who had to prove credibility twice over before being heard.",
+  "For my daughters — Nashwa, Amirah, and Ahlam — so they understand that their father's restlessness was never aimless. It was a compass.",
+] as const;
+
+export const bookDedication =
+  "For Nashwa, Amirah, and Ahlam. Leadership is not about titles or positions. It is about presence under pressure, and the space you create for others to grow.";
+
+export const bookClosing = {
+  thesis: "Techniques are necessary but insufficient. What makes you transformational is what lies beyond techniques: character, cultural intelligence, resilience, and the willingness to start at the foundation when everyone else is building from the top.",
+};
+
+export const bookPublisher = {
+  headline: "Interested in This Manuscript?",
+  body: "The manuscript is currently in first draft stage and available for publisher review. For inquiries about publishing rights, representation, or collaboration opportunities, please reach out directly.",
+  cta: "Contact the Author",
+};
+
+export const bookNewsletter = {
+  headline: "Stay informed about the memoir",
+  body: "The memoir is scheduled for release in 2026. Join the notification list for pre-order announcements, launch events, and exclusive excerpts.",
+  cta: "Notify Me When Available",
+  privacy: "Your email is used for memoir announcements only. Unsubscribe anytime.",
+};

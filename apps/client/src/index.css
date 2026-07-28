@@ -438,6 +438,59 @@
 .magnet-grid article > p { margin: 0; color: #dda783; font-size: 0.63rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; }
 .magnet-grid h3 { margin: auto 0 1.2rem; font-size: clamp(1.6rem, 3vw, 2.4rem); }
 
+/* @section: book-memoir-enhanced */
+.book-award-badge { display: inline-flex; align-items: center; gap: 0.5rem; border: 1px solid var(--line); border-radius: 9999px; padding: 0.55rem 0.9rem; color: var(--copper-dark); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; transition: background 180ms ease; }
+.book-award-badge:hover { background: rgba(221,165,127,0.08); }
+.book-award-badge svg { flex-shrink: 0; color: var(--copper-dark); }
+
+.book-about-grid { display: grid; gap: clamp(3rem, 7vw, 7rem); align-items: start; }
+.book-about-grid blockquote { margin: 2rem 0 0; border-left: 2px solid var(--copper); padding-left: 1.4rem; color: var(--navy); font-family: var(--font-serif); font-size: clamp(1.4rem, 2.8vw, 2rem); line-height: 1.15; }
+.book-metric-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; border: 1px solid var(--line); background: var(--line); }
+.book-metric-cards > div { display: flex; min-height: 10rem; flex-direction: column; justify-content: center; gap: 0.25rem; background: var(--paper); padding: 1.4rem; text-align: center; }
+.book-metric-cards svg { width: 1.5rem; height: 1.5rem; margin: 0 auto 0.5rem; color: var(--copper-dark); }
+.book-metric-cards > div > p:first-of-type { margin: 0; color: var(--navy); font-family: var(--font-serif); font-size: 1.25rem; font-weight: 600; }
+.book-metric-cards > div > p:last-of-type { margin: 0; color: #667078; font-size: 0.72rem; }
+
+.book-press-quote { margin: 1.5rem 0 0; color: var(--navy); font-family: var(--font-serif); font-size: clamp(1.6rem, 3.5vw, 3rem); line-height: 1.13; font-style: italic; }
+
+.book-prose p { margin: 0 0 1.25rem; color: #b8c5ce; font-size: clamp(1rem, 1.3vw, 1.12rem); line-height: 1.82; }
+.book-prose blockquote { margin: 2rem 0; border-left: 2px solid var(--copper); padding-left: 1.4rem; color: var(--paper); font-family: var(--font-serif); font-size: clamp(1.4rem, 2.8vw, 2rem); line-height: 1.18; font-style: italic; }
+
+.book-part-grid article blockquote { margin: 1.5rem 0 0; border-left: 2px solid var(--copper); padding-left: 1rem; color: var(--navy); font-family: var(--font-serif); font-size: clamp(1.1rem, 2vw, 1.5rem); line-height: 1.18; font-style: italic; }
+.book-part-grid article .eyebrow { margin-bottom: 0.25rem; }
+
+.book-toc { display: grid; gap: 1.5rem; margin-top: 2rem; }
+.book-toc-part { border-top: 1px solid var(--line); padding-top: 1.5rem; }
+.book-toc-heading { display: flex; align-items: baseline; gap: 1rem; margin-bottom: 1rem; }
+.book-toc-heading span { color: var(--copper-dark); font-family: var(--font-serif); font-size: clamp(2.5rem, 5vw, 4rem); font-weight: 300; line-height: 1; }
+.book-toc-heading h3 { margin: 0; font-size: clamp(1.8rem, 3vw, 2.7rem); }
+.book-toc ol { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
+.book-toc li { display: flex; align-items: baseline; gap: 1rem; border-bottom: 1px solid var(--line); padding: 0.9rem 0; color: #4a535c; }
+.book-toc li span { color: var(--copper-dark); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; }
+
+.book-framework-grid { display: grid; gap: 1px; border: 1px solid var(--line); background: var(--line); }
+.book-framework-grid article { display: flex; min-height: 11rem; flex-direction: column; background: var(--paper); padding: 1.4rem; }
+.book-framework-grid h3 { margin: 0 0 0.6rem; font-size: 1.15rem; color: var(--navy); }
+.book-framework-grid p { margin: 0; color: #667078; font-size: 0.85rem; font-style: italic; }
+
+.book-dedication-card { border-top: 2px solid var(--navy); padding-top: 1.5rem; }
+.book-dedication-card p.font-serif { margin: 1rem 0 0; color: var(--navy); font-family: var(--font-serif); }
+.book-dedication-card ul { margin: 1rem 0 0; padding: 0; list-style: none; }
+.book-dedication-card li { display: flex; gap: 0.75rem; color: #4a535c; font-size: 0.86rem; line-height: 1.6; }
+.book-dedication-card li span { width: 0.4rem; height: 0.4rem; border-radius: 9999px; background: var(--copper-dark); flex-shrink: 0; margin-top: 0.5rem; }
+
+@media (min-width: 640px) {
+  .book-framework-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 768px) {
+  .book-about-grid { grid-template-columns: 1fr 1fr; }
+  .book-toc { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (min-width: 1024px) {
+  .book-framework-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .book-toc { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
 /* @section: framework-and-article-detail */
 .framework-operating-grid, .use-impact-grid, .detail-end-grid, .chapter-context { display: grid; gap: clamp(3rem, 7vw, 7rem); }
 .numbered-list { margin: 0; padding: 0; list-style: none; border-top: 1px solid var(--line); }
