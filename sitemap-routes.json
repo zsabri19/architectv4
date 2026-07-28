@@ -1,0 +1,22 @@
+{
+  "version": 1,
+  "source": "src/App.tsx",
+  "generatedAt": "2026-07-28T09:07:02.761Z",
+  "routes": [
+    "/",
+    "/advisory",
+    "/architect",
+    "/book",
+    "/clarityos",
+    "/connect",
+    "/contact",
+    "/dispatch",
+    "/frameworks",
+    "/insights",
+    "/media",
+    "/memoir",
+    "/newsletter",
+    "/services",
+    "/the-architect"
+  ]
+}
