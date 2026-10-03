@@ -2,6 +2,7 @@ import { ArrowDown, ArrowRight, Download } from "lucide-react";
 import { Link } from "react-router-dom";
 import { SiteFooter } from "@/components/layout/SiteFooter";
 import { SiteHeader } from "@/components/layout/SiteHeader";
+import { PageSeo } from "@/components/seo/PageSeo";
 import {
   bookParts,
   clarityComponents,
@@ -9,12 +10,14 @@ import {
   featuredFrameworks,
   launchInsights,
   recoveredAssets,
+  routeMetadata,
   services,
 } from "@/content/site";
 
 const Index = () => {
   return (
     <div className="site-page">
+      <PageSeo {...routeMetadata["/"]} />
       <a className="skip-link" href="#main-content">Skip to main content</a>
       <SiteHeader />
 
