@@ -2,7 +2,7 @@ import { readFileSync } from "node:fs";
 import { dirname, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { describe, expect, it } from "vitest";
-import { LIVE_HOME, liveCanonical, liveCanonicalByPath } from "./live-canonical";
+import { DEFAULT_OG_IMAGE, LIVE_HOME, liveCanonical, liveCanonicalByPath, liveOgImage, liveOgImageByPath } from "./live-canonical";
 
 const expected: Record<string, string> = {
   "/": "https://global-mkts.com/",
@@ -63,6 +63,25 @@ describe("liveCanonical", () => {
   });
 });
 
+describe("liveOgImage", () => {
+  it("uses a live-site image for each mapped page and the default elsewhere", () => {
+    expect(liveOgImageByPath["/"]).toBe("https://global-mkts.com/assets/hero.jpg");
+    expect(liveOgImage("/the-architect")).toBe("https://global-mkts.com/assets/origin.jpg");
+    expect(liveOgImage("/clarityos")).toBe("https://global-mkts.com/assets/cover.jpg");
+    expect(liveOgImage("/book")).toBe("https://global-mkts.com/memoir/assets/photos/cover-headshot.jpeg");
+    expect(liveOgImage("/media")).toBe("https://global-mkts.com/assets/banner-decode.jpg");
+    expect(liveOgImage("/newsletter")).toBe("https://global-mkts.com/assets/portrait-6.jpg");
+    expect(liveOgImage("/contact")).toBe("https://global-mkts.com/assets/portrait-3.jpg");
+    expect(liveOgImage("/frameworks")).toBe(DEFAULT_OG_IMAGE);
+    expect(liveOgImage("/insights/the-investment-paradox")).toBe(DEFAULT_OG_IMAGE);
+    expect(liveOgImage("/missing")).toBe(DEFAULT_OG_IMAGE);
+    for (const image of Object.values(liveOgImageByPath)) {
+      expect(image.startsWith("https://global-mkts.com/")).toBe(true);
+      expect(image).not.toContain("github.io");
+    }
+  });
+});
+
 describe("static deindex files", () => {
   const clientRoot = resolve(dirname(fileURLToPath(import.meta.url)), "../..");
 
@@ -71,15 +90,20 @@ describe("static deindex files", () => {
       const html = readFileSync(resolve(clientRoot, file), "utf8");
       expect(html).toContain('<meta name="robots" content="noindex, follow" />');
       expect(html).toContain('<link rel="canonical" href="https://global-mkts.com/" />');
+      expect(html).toContain('<meta property="og:image" content="https://global-mkts.com/assets/hero.jpg" />');
+      expect(html).toContain('<meta name="twitter:image" content="https://global-mkts.com/assets/hero.jpg" />');
       expect(html).not.toContain('rel="canonical" href="https://zsabri19.github.io');
+      expect(html).not.toContain("github.io");
     }
   });
 
-  it("does not list mirror URLs in sitemap.xml and does not disallow crawling", () => {
+  it("does not list mirror URLs in sitemap.xml and points robots at the live sitemap", () => {
     const sitemap = readFileSync(resolve(clientRoot, "public/sitemap.xml"), "utf8");
     const robots = readFileSync(resolve(clientRoot, "public/robots.txt"), "utf8");
     expect(sitemap).not.toContain("<loc>");
     expect(sitemap).not.toContain("github.io");
     expect(robots.toLowerCase()).not.toContain("disallow");
+    expect(robots).toContain("Sitemap: https://global-mkts.com/sitemap.xml");
+    expect(robots).not.toContain("architect.global-mkts.com");
   });
 });

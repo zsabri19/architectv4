@@ -21,6 +21,12 @@ describe("PageSeo", () => {
       expect(document.querySelector('meta[property="og:url"]')?.getAttribute("content")).toBe(
         "https://global-mkts.com/memoir/index.html",
       );
+      expect(document.querySelector('meta[property="og:image"]')?.getAttribute("content")).toBe(
+        "https://global-mkts.com/memoir/assets/photos/cover-headshot.jpeg",
+      );
+      expect(document.querySelector('meta[name="twitter:image"]')?.getAttribute("content")).toBe(
+        "https://global-mkts.com/memoir/assets/photos/cover-headshot.jpeg",
+      );
     });
   });
 
@@ -30,6 +36,12 @@ describe("PageSeo", () => {
     await waitFor(() => {
       expect(document.querySelector('link[rel="canonical"]')?.getAttribute("href")).toBe("https://global-mkts.com/");
       expect(document.querySelector('meta[name="robots"]')?.getAttribute("content")).toBe("noindex, follow");
+      expect(document.querySelector('meta[property="og:image"]')?.getAttribute("content")).toBe(
+        "https://global-mkts.com/assets/hero.jpg",
+      );
+      expect(document.querySelector('meta[name="twitter:image"]')?.getAttribute("content")).toBe(
+        "https://global-mkts.com/assets/hero.jpg",
+      );
     });
   });
 });

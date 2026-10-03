@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import type { RouteMeta } from "@/content/site";
-import { liveCanonical } from "@/lib/live-canonical";
+import { liveCanonical, liveOgImage } from "@/lib/live-canonical";
 
 /* @section: route-level-seo */
 type PageSeoProps = RouteMeta & {
@@ -20,6 +20,7 @@ function ensureMeta(selector: string, attribute: "name" | "property", key: strin
 export function PageSeo({ title, description, path, type = "website" }: PageSeoProps) {
   useEffect(() => {
     const canonical = liveCanonical(path);
+    const image = liveOgImage(path);
     document.title = title;
 
     ensureMeta('meta[name="description"]', "name", "description").content = description;
@@ -30,8 +31,10 @@ export function PageSeo({ title, description, path, type = "website" }: PageSeoP
     ensureMeta('meta[property="og:description"]', "property", "og:description").content = description;
     ensureMeta('meta[property="og:type"]', "property", "og:type").content = type;
     ensureMeta('meta[property="og:url"]', "property", "og:url").content = canonical;
+    ensureMeta('meta[property="og:image"]', "property", "og:image").content = image;
     ensureMeta('meta[name="twitter:title"]', "name", "twitter:title").content = title;
     ensureMeta('meta[name="twitter:description"]', "name", "twitter:description").content = description;
+    ensureMeta('meta[name="twitter:image"]', "name", "twitter:image").content = image;
 
     let canonicalLink = document.head.querySelector<HTMLLinkElement>('link[rel="canonical"]');
     if (!canonicalLink) {

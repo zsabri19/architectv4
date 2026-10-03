@@ -56,3 +56,27 @@ export function normalizeMirrorPath(path: string): string {
 export function liveCanonical(path: string): string {
   return liveCanonicalByPath[normalizeMirrorPath(path)] ?? LIVE_HOME;
 }
+
+/** Homepage Open Graph image. Confirmed 200 on the live site. */
+export const DEFAULT_OG_IMAGE = `${LIVE_ORIGIN}/assets/hero.jpg`;
+
+/**
+ * Share image for a mirror path. Uses the live page's og:image when that
+ * file returns 200. The mirror's local recovered images are not on the live
+ * host, so every other path uses the live default.
+ */
+export const liveOgImageByPath: Record<string, string> = {
+  "/": DEFAULT_OG_IMAGE,
+  "/the-architect": `${LIVE_ORIGIN}/assets/origin.jpg`,
+  "/clarityos": `${LIVE_ORIGIN}/assets/cover.jpg`,
+  "/book": `${LIVE_ORIGIN}/memoir/assets/photos/cover-headshot.jpeg`,
+  "/media": `${LIVE_ORIGIN}/assets/banner-decode.jpg`,
+  "/newsletter": `${LIVE_ORIGIN}/assets/portrait-6.jpg`,
+  "/contact": `${LIVE_ORIGIN}/assets/portrait-3.jpg`,
+  "/book/chapter-01-born-between-worlds": `${LIVE_ORIGIN}/memoir/assets/photos/cover-headshot.jpeg`,
+  "/book/chapter-09-the-pyramid-a-framework-for-everything": `${LIVE_ORIGIN}/memoir/assets/photos/cover-headshot.jpeg`,
+};
+
+export function liveOgImage(path: string): string {
+  return liveOgImageByPath[normalizeMirrorPath(path)] ?? DEFAULT_OG_IMAGE;
+}
